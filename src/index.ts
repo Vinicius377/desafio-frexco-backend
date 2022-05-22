@@ -1,11 +1,15 @@
 import express from 'express'
 import routes from './routes'
-import { openDb } from './database/sqliteConfig'
+import 'dotenv/config'
+import sequelize from './config/database'
 
+sequelize
+  .sync()
+  .then(() => console.log('syncronized database'))
+  .catch(e => console.log(e))
 const PORT = process.env.PORT || 2000
 const app = express()
 
-openDb()
 app.use(express.json())
 app.use(routes)
 
