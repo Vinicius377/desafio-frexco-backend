@@ -1,7 +1,10 @@
 import jwt from 'jsonwebtoken'
 
 function authenticateService(email: string, name: string) {
-  const token = jwt.sign({ email, name }, 'asdiojashndub1231239871y489', {
+  if (!process.env.JWTSECRET) {
+    throw new Error('need JWTSECRET')
+  }
+  const token = jwt.sign({ email, name }, process.env.JWTSECRET, {
     expiresIn: '48h',
   })
   return token

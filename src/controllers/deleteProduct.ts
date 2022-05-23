@@ -1,5 +1,5 @@
 import { Request, Response } from 'express'
-import ProductModel from '../../models/product-model'
+import ProductModel from '../models/product-model'
 
 async function deleteProduct(req: Request, res: Response) {
   const { id } = req.body
@@ -15,7 +15,7 @@ async function deleteProduct(req: Request, res: Response) {
     })
     res.status(200).json({ err: 'product deleted' })
   } catch (e) {
-    res.status(500).json({ err: 'internal error' })
+    res.status(500).json({ err: 'internal error' + e })
   }
 }
 

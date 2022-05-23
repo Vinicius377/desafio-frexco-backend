@@ -1,20 +1,21 @@
 import { Request, Response } from 'express'
-import ProductModel from '../../models/product-model'
+import ProductModel from '../models/product-model'
 
 async function updateProduct(req: Request, res: Response) {
-  const { id, name, price, type } = req.body
+  const { id, name, price, type, count } = req.body
   if (!id) {
     res.status(400).json({ err: 'id needed' })
     return
   }
 
-  const updatedData = fomatedValues(name, price, type)
+  const updatedData = fomatedValues(name, price, type, count)
   try {
     await ProductModel.update(updatedData, {
       where: {
         id,
       },
     })
+    res.status(200).json({ message: 'updated product' })
   } catch (e) {
     res.status(500).json({ err: 'internal error' + e })
   }
@@ -23,11 +24,17 @@ async function updateProduct(req: Request, res: Response) {
 interface ValidatedData {
   [index: string]: string | number
 }
-const fomatedValues = (name: string, price: string, type: string) => {
+const fomatedValues = (
+  name: string,
+  price: string,
+  type: string,
+  count: string
+) => {
   let objValues = {
     name,
     price: Number(price),
     type,
+    count: Number(count),
   }
   let validatedData: ValidatedData = {}
   for (let [key, value] of Object.entries(objValues)) {

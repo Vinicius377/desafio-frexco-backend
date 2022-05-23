@@ -11,12 +11,13 @@ interface ProductModel
     InferAttributes<ProductModel>,
     InferCreationAttributes<ProductModel>
   > {
-  readonly id: number
+  readonly id?: string
   name: string
   price: number
-  readonly createdAt: Date
-  updatedAt: Date
+  readonly createdAt?: Date
+  updatedAt?: Date
   type: string
+  count?: number
 }
 
 const ProductModel = sequelize.define<ProductModel>('product', {
@@ -24,6 +25,7 @@ const ProductModel = sequelize.define<ProductModel>('product', {
     type: DataTypes.UUIDV4,
     primaryKey: true,
     unique: true,
+    defaultValue: DataTypes.UUIDV4,
   },
   name: {
     type: DataTypes.STRING,
@@ -39,11 +41,16 @@ const ProductModel = sequelize.define<ProductModel>('product', {
   },
   createdAt: {
     type: DataTypes.DATE,
-    defaultValue: Date.now(),
+    defaultValue: DataTypes.NOW,
   },
   updatedAt: {
     type: DataTypes.DATE,
-    defaultValue: Date.now(),
+    defaultValue: DataTypes.NOW,
+  },
+  count: {
+    type: DataTypes.INTEGER,
+    defaultValue: 1,
+    allowNull: false,
   },
 })
 

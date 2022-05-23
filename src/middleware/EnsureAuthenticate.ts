@@ -7,10 +7,13 @@ export function Authenticate(req: Request, res: Response, next: NextFunction) {
     res.status(401).json({ err: 'unauthorized' })
     return
   }
+  if (!process.env.JWTSECRET) {
+    throw new Error('need JWTSECRET')
+  }
   const [, token] = authToken.split(' ')
-  jwt.verify(token, 'n18nd8712ehnd128j32489', (err, data) => {
+  jwt.verify(token, process.env.JWTSECRET, err => {
     if (err) {
-      res.status(401).json({ err: 'unauthorized' })
+      res.status(401).json({ err: 'invalid token' })
       return
     }
     next()
