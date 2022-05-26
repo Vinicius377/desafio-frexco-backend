@@ -16,6 +16,8 @@ interface UserModel
   name: string
   hash: string
   salt: string
+  isAdm: boolean
+  readonly createdAt?: Date
 }
 const UserModel = sequelize.define<UserModel>('user', {
   id: {
@@ -40,6 +42,14 @@ const UserModel = sequelize.define<UserModel>('user', {
   salt: {
     type: DataTypes.STRING,
     allowNull: false,
+  },
+  isAdm: {
+    type: DataTypes.BOOLEAN,
+    defaultValue: false,
+  },
+  createdAt: {
+    type: DataTypes.DATE,
+    defaultValue: DataTypes.NOW,
   },
 })
 

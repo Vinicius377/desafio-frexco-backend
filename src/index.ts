@@ -11,9 +11,9 @@ sequelize
 const PORT = process.env.PORT || 2000
 const app = express()
 
+app.use(cors())
 app.use(express.json())
 app.use(routes)
-app.use(cors())
 
 app.listen(PORT, () => {
   console.log('server is running at port ' + PORT)
