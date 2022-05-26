@@ -2,7 +2,7 @@ import { Request, Response } from 'express'
 import ProductModel from '../models/product-model'
 
 async function updateProduct(req: Request, res: Response) {
-  const { id, name, price, type, count } = req.body
+  const { id, name, price, type, count, measure } = req.body
   if (!id) {
     res.status(400).json({ err: 'id needed' })
     return

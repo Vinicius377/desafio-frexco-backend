@@ -18,6 +18,7 @@ interface ProductModel
   updatedAt?: Date
   type: string
   count?: number
+  measure: string
 }
 
 const ProductModel = sequelize.define<ProductModel>('product', {
@@ -51,6 +52,9 @@ const ProductModel = sequelize.define<ProductModel>('product', {
     type: DataTypes.INTEGER,
     defaultValue: 1,
     allowNull: false,
+  },
+  measure: {
+    type: DataTypes.STRING,
   },
 })
 
