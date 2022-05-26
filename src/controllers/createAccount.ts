@@ -3,7 +3,7 @@ import UserModel from '../models/user-model'
 import crypto from 'crypto'
 
 async function createAccount(req: Request, res: Response) {
-  const { name, email, password } = req.body
+  const { name, email, password, isAdm } = req.body
   if (!name || !email || !password) {
     res.status(400).json({ err: "'insufficient information" })
     return
@@ -22,10 +22,11 @@ async function createAccount(req: Request, res: Response) {
         name,
         salt,
         hash: passwordHash,
+        isAdm,
       },
     })
     if (created) {
-      res.status(200).json({ message: 'created new account' })
+      res.status(201).json({ message: 'created new account' })
     } else {
       res.status(400).json({ message: 'there is a account with this email' })
     }
