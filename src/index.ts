@@ -8,7 +8,7 @@ sequelize
   .sync()
   .then(() => console.log('syncronized database'))
   .catch(e => console.log(e))
-const PORT = process.env.PORT || 2000
+const PORT = process.env.PORT || 2222
 const app = express()
 
 app.use(cors())

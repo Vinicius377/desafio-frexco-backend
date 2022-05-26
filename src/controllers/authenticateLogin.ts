@@ -6,6 +6,7 @@ import authenticateService from '../services/authenticate-service'
 
 async function authenticateLogin(req: Request, res: Response) {
   const { email, password } = req.body
+
   if (!email || !password) {
     res.status(400).json({ err: 'insufficient information' })
     return
