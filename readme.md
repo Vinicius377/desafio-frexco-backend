@@ -33,7 +33,7 @@ Você foi contratado para criar uma aplicação de controle de estoque. Cada vez
   - Execute ` npm install` para baixar as dependências
   - Execute ` npm start` para executar o servidor
 
-- Pasta do Front-end
+- [Pasta do Front-end](https://github.com/Vinicius377/desafio-frexco-frontend)
   - Abra o diretório do front-end em outro terminal
   - Execute ` npm install` para baixar as dependências
   - Execute ` npm start` para executar a aplicação
