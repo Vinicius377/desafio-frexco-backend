@@ -167,8 +167,8 @@ Você foi contratado para criar uma aplicação de controle de estoque. Cada vez
   - `post` : "/buy" - Credita o produto no estoque
 
     **body** = {
-    id,
-    count
+    id : string,
+    count : number
     }
 
     **response** = {
@@ -182,4 +182,4 @@ Você foi contratado para criar uma aplicação de controle de estoque. Cada vez
   - Senha : admin
 - Cliente
   - Email: usuario@gmail.com
-  - Senhya : 1234
+  - Senha : 1234
