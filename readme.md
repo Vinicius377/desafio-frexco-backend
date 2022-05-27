@@ -39,6 +39,142 @@ Você foi contratado para criar uma aplicação de controle de estoque. Cada vez
   - Execute ` npm start` para executar a aplicação
   - A aplicação abrirá em http://localhost:3000
 
+## Rotas
+
+### Todas as rotas tem a URL BASE = http://localhost:2222/
+
+- Produto
+
+  - `get` : "/product" - Busca todos os produtos
+
+    **response** = {
+    id : string,
+    price : number,
+    name : string,
+    type : string,
+    measure : string,
+    count : number
+    } || {
+    err : string
+    }
+
+  - `post` : "/product" - Cria um produto
+
+    **headers** = {
+    authorization: "Bearer " + token
+    }
+
+    **body** = {
+    name : string,
+    type : string,
+    price : number,
+    count : number,
+    measure : string
+    }
+
+    **response** = {
+    id : string,
+    name : string,
+    price : number,
+    type : string,
+    count : number,
+    measure : string
+    } || {
+    err : string
+    }
+
+  - `put` : "/product" - Atualiza o produto
+
+    **headers** = {
+    authorization: "Bearer " + token
+    }
+
+    **body**= {
+    id : string,
+    name? : string,
+    price? : number,
+    type? : string,
+    count? : number,
+    measure? : string
+    }
+
+    **response** = {
+    message || err : string
+    }
+
+  - `delete` : "/product" - Deleta o produto
+
+    **headers** = {
+    authorization: "Bearer " + token
+    }
+
+    **body** = {
+    id : string
+    }
+
+    **response** = {
+    message || err : string
+    }
+
+- Usuário
+
+  - `post`: "/login" - Faz o login
+
+    **body** = {
+    email : string,
+    password : string || number
+    }
+
+    **response** = {
+    name : string,
+    id : string,
+    email : string,
+    isAdm : boolean
+    } || {
+    err : string
+    }
+
+  - `post` : "/signin" - Cria um novo usuário
+
+    **body** = {
+    name : string,
+    email : string,
+    password : string || number,
+    isAdm : boolean
+    }
+
+    **response** = {
+    message || err : string
+    }
+
+  - `get` : "/auth" - Autentica o usuário
+
+    **headers** = {
+    authorization: "Bearer " + token
+    }
+
+    **response** = {
+    name : string,
+    id : string,
+    email : string,
+    isAdm : boolean
+    } || {
+    err : string
+    }
+
+- Compra
+
+  - `post` : "/buy" - Credita o produto no estoque
+
+    **body** = {
+    id,
+    count
+    }
+
+    **response** = {
+    message || err : string
+    }
+
 ## Usuários ja registrados
 
 - Administrador
