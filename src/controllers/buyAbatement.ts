@@ -24,6 +24,7 @@ async function buyAbatement(req: Request, res: Response) {
 
   if (!cart) {
     res.status(400).json({ err: 'needed have itens in cart' })
+    return
   }
 
   const [, token] = authToken?.split(' ') as string[]

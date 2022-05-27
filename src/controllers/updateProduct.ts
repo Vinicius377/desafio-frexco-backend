@@ -8,7 +8,7 @@ async function updateProduct(req: Request, res: Response) {
     return
   }
 
-  const updatedData = fomatedValues(name, price, type, count)
+  const updatedData = fomatedValues(name, price, type, count, measure)
   try {
     await ProductModel.update(updatedData, {
       where: {
@@ -28,13 +28,15 @@ const fomatedValues = (
   name: string,
   price: string,
   type: string,
-  count: string
+  count: string,
+  measure: string
 ) => {
   let objValues = {
     name,
     price: Number(price),
     type,
     count: Number(count),
+    measure,
   }
   let validatedData: ValidatedData = {}
   for (let [key, value] of Object.entries(objValues)) {

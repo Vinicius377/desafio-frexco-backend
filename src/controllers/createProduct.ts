@@ -19,8 +19,9 @@ async function createProduct(req: Request, res: Response) {
     measure,
   }
   try {
-    await ProductModel.create(newProduct)
-    res.status(201).json(newProduct)
+    const data = await ProductModel.create(newProduct)
+
+    res.status(201).json(data)
   } catch (e) {
     res.status(500).json({ err: 'internal error' + e })
   }
