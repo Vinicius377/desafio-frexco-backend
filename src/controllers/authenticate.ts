@@ -21,7 +21,7 @@ export async function authenticate(req: Request, res: Response) {
 
   const [, token] = authToken.split(' ')
   const decoded = jwt.verify(token, process.env.JWTSECRET || JWTSECRET)
-  console.log(decoded)
+
   const { id } = decoded as TokenPayload
 
   const data = await UserModel.findOne({

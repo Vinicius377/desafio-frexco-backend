@@ -15,8 +15,6 @@ async function buyAbatement(req: Request, res: Response) {
   const authToken = req.headers.authorization
   const { cart }: Cart = req.body
 
-  console.log(req.body)
-
   if (!authToken) {
     res.status(401).json({ err: 'needed  be logged' })
     return

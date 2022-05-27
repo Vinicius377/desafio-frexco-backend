@@ -14,7 +14,7 @@ async function createProduct(req: Request, res: Response) {
   const newProduct = {
     name,
     type,
-    price: Number(price),
+    price: Number(price.replace(',', '.')),
     count: Number(count),
     measure,
   }

@@ -8,6 +8,7 @@ Você foi contratado para criar uma aplicação de controle de estoque. Cada vez
 
 - Para validar o requisito "Cada vez que um produto for vendido o mesmo deverá ser debitado do estoque", também criei um sistema de vendas, para simular uma venda.
 - Na tela de "Criar conta" existe a possibilidade de registrar o usuário como administrador, essa é uma forma de facilitar no teste da aplicação.
+- As senhas foram criptografadas no banco de dados
 
 ## Tecnologias utilizadas
 
@@ -37,3 +38,12 @@ Você foi contratado para criar uma aplicação de controle de estoque. Cada vez
   - Execute ` npm install` para baixar as dependências
   - Execute ` npm start` para executar a aplicação
   - A aplicação abrirá em http://localhost:3000
+
+## Usuários ja registrados
+
+- Administrador
+  - Email : adminteste@gmail.com
+  - Senha : admin
+- Cliente
+  - Email: usuario@gmail.com
+  - Senhya : 1234

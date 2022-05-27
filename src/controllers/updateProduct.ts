@@ -33,7 +33,7 @@ const fomatedValues = (
 ) => {
   let objValues = {
     name,
-    price: Number(price),
+    price: Number(price.replace(',', '.')),
     type,
     count: Number(count),
     measure,
